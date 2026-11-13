@@ -1,0 +1,129 @@
+Sources:
+- name: Silver_stg
+  description: xx
+  Database: Analytics_DB
+  Schema: BRONZE
+
+  tables:
+  - name: CUSTOMERS
+    Identifier: CUSTOMERS
+    columns:
+    - name: ADDRESS
+      data_tests:
+      - not_null
+    - name: CITY
+      data_tests:
+      - not_null
+    - name: CUSTOMERID
+      data_tests:
+      - not_null
+      - unique
+    - name: EMAIL
+      data_tests:
+      - not_null
+    - name: FIRSTNAME
+      data_tests:
+      - not_null
+    - name: LASTNAME
+      data_tests:
+      - not_null
+    - name: raw_data
+      data_tests:
+      - not_null
+  - name: raw_products
+    columns:
+    - name: source_record_id
+      data_tests:
+      - not_null
+    - name: source_updated_at
+      data_tests:
+      - not_null
+    - name: ingestion_event_id
+      data_tests:
+      - not_null
+      - unique
+    - name: ingested_at
+      data_tests:
+      - not_null
+    - name: source_system
+      data_tests:
+      - not_null
+    - name: batch_id
+      data_tests:
+      - not_null
+    - name: raw_data
+      data_tests:
+      - not_null
+  - name: raw_customers
+    columns:
+    - name: source_record_id
+      data_tests:
+      - not_null
+    - name: source_updated_at
+      data_tests:
+      - not_null
+    - name: ingestion_event_id
+      data_tests:
+      - not_null
+      - unique
+    - name: ingested_at
+      data_tests:
+      - not_null
+    - name: source_system
+      data_tests:
+      - not_null
+    - name: batch_id
+      data_tests:
+      - not_null
+    - name: raw_data
+      data_tests:
+      - not_null
+  - name: raw_sales
+    columns:
+    - name: source_record_id
+      data_tests:
+      - not_null
+    - name: source_updated_at
+      data_tests:
+      - not_null
+    - name: ingestion_event_id
+      data_tests:
+      - not_null
+      - unique
+    - name: ingested_at
+      data_tests:
+      - not_null
+    - name: source_system
+      data_tests:
+      - not_null
+    - name: batch_id
+      data_tests:
+      - not_null
+    - name: raw_data
+      data_tests:
+      - not_null
+  - name: raw_competitor_prices
+    columns:
+    - name: source_record_id
+      data_tests:
+      - not_null
+    - name: source_updated_at
+      data_tests:
+      - not_null
+    - name: ingestion_event_id
+      data_tests:
+      - not_null
+      - unique
+    - name: ingested_at
+      data_tests:
+      - not_null
+    - name: source_system
+      data_tests:
+      - not_null
+    - name: batch_id
+      data_tests:
+      - not_null
+    - name: raw_data
+      data_tests:
+      - not_null
+
