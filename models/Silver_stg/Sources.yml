@@ -1,0 +1,37 @@
+
+sources:
+  - name: BRONZE
+    description: The primary source system for order management data analytics.  
+    database: ANALYTICS_DB
+    schema: BRONZE
+    config:
+      freshness:
+        warn_after: {count: 1, period: day}
+        error_after: {count: 3, period: day}
+        loaded_at_field: Updated_at
+
+    tables:
+      - name: CUSTOMERS
+        description: The customers table from order management system(OMS).      
+        identifier: customers
+        columns:
+          - name: CUSTOMERID
+            description: "Unique customer identifier"
+            tests:
+              - unique
+              - not_null
+      - name: ORDERS
+        description: The orders table from order management system(OMS).      
+        identifier: orders
+      - name: ORDERITEMS
+        description: The orderitems table from order management system(OMS).      
+        identifier: orderitems
+      - name: EMPLOYEES
+        description: The employees table from order management system(OMS).      
+        identifier: employees
+        columns:
+          - name: address
+            description: Full Address of emplyees for Transport Arrangements.          
+            tests:
+              - not_null
+              - string_not_empty
