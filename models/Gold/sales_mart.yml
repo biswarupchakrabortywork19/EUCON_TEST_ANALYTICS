@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: fact_orders
+    columns:
+      - name: OrderID
+        data_tests:
+          - unique
+          - not_null
+      - name: CustomerID
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: CustomerID
+      - name: OrderDate
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: Date
+  - name: fact_order_items
+    columns:
+      - name: OrderItemID
+        data_tests:
+          - not_null
+      - name: CustomerID
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: CustomerID
+      - name: OrderDate
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: Date
+      - name: OrderID
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fact_orders')
+                field: OrderID
+  - name: dim_customer
+    columns:
+      - name: CustomerID
+        data_tests:
+          - unique
+          - not_null
+  - name: dim_date
+    columns:
+      - name: Date
+        data_tests:
+          - unique
+          - not_null
