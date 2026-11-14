@@ -46,3 +46,7 @@ models:
   Gold:
     +materialized: table
     +schema: Gold  
+
+  ML_features:
+    +schema: ML_FEATURES
+    +materialized: table

@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: customer_features_daily
+    description: "Daily observed customer features. Past daily rows persist; current-state sources do not support point-in-time historical reconstruction."
+    columns:
+      - name: CustomerID
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: CustomerID
+      - name: FeatureDate
+        data_tests:
+          - not_null
